@@ -1,0 +1,23 @@
+--Funcoes de janela
+--Funcoes SUM(), MAX(), MIN(), AVG(), COUNT()
+--CRIE UMA COLUNA CONTENDO A SOMA TOTAL DE VENDAS DA TABELA LOJAS
+
+SELECT * FROM Lojas
+
+SELECT
+	*,
+	SUM(Qtd_Vendida) OVER(PARTITION BY(Regiao)) AS 'QTD_TOTAL'
+FROM Lojas
+ORDER BY Id_Loja
+
+SELECT
+	*,
+	COUNT(Id_Loja) OVER(PARTITION BY(Regiao)) AS 'QTD DE LOJA'
+FROM Lojas
+ORDER BY Id_Loja
+
+SELECT
+	*,
+	AVG(Qtd_Vendida) OVER(PARTITION BY(Regiao)) AS 'QTD DE LOJA'
+FROM Lojas
+ORDER BY Id_Loja
